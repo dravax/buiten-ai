@@ -345,6 +345,8 @@
     position: relative; overflow: hidden;
     transition: all 0.3s;
     cursor: pointer;
+    text-decoration: none;
+    display: block;
   }
   .portal-card:hover {
     border-color: rgba(201,168,76,0.3);
@@ -573,7 +575,7 @@
     <p class="hero-desc">Structured comparability, risk-adjusted fairness, and supervised transparency — designed for the evolving European healthcare corridor.</p>
     <div class="hero-actions">
       <a href="#pilot" class="btn-primary">View Model Corridor →</a>
-      <a href="#" class="btn-outline">Download White Paper</a>
+      <a href="https://github.com/dravax/buiten-ai/raw/main/whitepaper-download.pdf" class="btn-outline" download>Download White Paper →</a>
     </div>
   </div>
   <div class="hero-right">
@@ -668,7 +670,7 @@
       <p class="section-desc">Three operationally distinct interfaces — each purpose-bound, role-restricted, and governed by the shared infrastructure architecture.</p>
     </div>
     <div class="portals-grid">
-      <div class="portal-card arts">
+      <a href="https://buitenarts.com" target="_blank" class="portal-card arts">
         <div class="portal-accent"></div>
         <div class="portal-domain">buitenarts.com</div>
         <div class="portal-audience">For General Practitioners</div>
@@ -680,9 +682,9 @@
           <li>Identity-data architectural separation</li>
           <li>Secure report return to originating GP</li>
         </ul>
-        <a href="https://buitenarts.com" class="portal-btn" target="_blank">Access Interface →</a>
-      </div>
-      <div class="portal-card score">
+        <span class="portal-btn">Access Interface →</span>
+      </a>
+      <a href="https://buitenscore.com" target="_blank" class="portal-card score">
         <div class="portal-accent"></div>
         <div class="portal-domain">buitenscore.com</div>
         <div class="portal-audience">For Hospitals & Clinical Institutions</div>
@@ -694,9 +696,9 @@
           <li>Longitudinal variance trend analysis</li>
           <li>Academic recalibration pathway access</li>
         </ul>
-        <a href="https://buitenscore.com" class="portal-btn" target="_blank">Access Dashboard →</a>
-      </div>
-      <div class="portal-card claims">
+        <span class="portal-btn">Access Dashboard →</span>
+      </a>
+      <a href="https://buitenclaims.com" target="_blank" class="portal-card claims">
         <div class="portal-accent"></div>
         <div class="portal-domain">buitenclaims.com</div>
         <div class="portal-audience">For Insurers & Review Teams</div>
@@ -708,8 +710,8 @@
           <li>Complication context analysis</li>
           <li>Financial concordance alerts</li>
         </ul>
-        <a href="https://buitenclaims.com" class="portal-btn" target="_blank">Access Engine →</a>
-      </div>
+        <span class="portal-btn">Access Engine →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -878,10 +880,13 @@
     <div class="footer-col">
       <h4>Documentation</h4>
       <ul>
-        <li><a href="#">White Paper</a></li>
-        <li><a href="#">Governance & Oversight</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Hospital Participation</a></li>
+        <li><a href="https://github.com/dravax/buiten-ai/raw/main/whitepaper-download.pdf" download>White Paper</a></li>
+        <li><a href="https://github.com/dravax/buiten-ai/raw/main/GOVERNANCE%20%26%20OVERSIGHT.pdf" download>Governance &amp; Oversight</a></li>
+        <li><a href="https://github.com/dravax/buiten-ai/raw/main/FREQUENTLY%20ASKED%20QUESTIONS.pdf" download>FAQ</a></li>
+        <li><a href="https://github.com/dravax/buiten-ai/raw/main/HOSPITAL%20PARTICIPATION%20FRAMEWORK.pdf" download>Hospital Participation</a></li>
+        <li><a href="https://github.com/dravax/buiten-ai/raw/main/INDICATION%20MATRIX.pdf" download>Indication Matrix</a></li>
+        <li><a href="https://github.com/dravax/buiten-ai/raw/main/INSURANCE%20SUSTAINABILITY%20FRAMEWORK.pdf" download>Insurance Sustainability</a></li>
+        <li><a href="https://github.com/dravax/buiten-ai/raw/main/PILOT%20%26%20ROADMAP.pdf" download>Pilot &amp; Roadmap</a></li>
       </ul>
     </div>
   </div>
@@ -895,7 +900,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
@@ -903,12 +908,3 @@
 
   const sections = document.querySelectorAll('section[id], div[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--pure)' : ''; });
-    document.querySelector('nav').style.background = window.scrollY > 60 ? 'rgba(11,30,61,0.98)' : 'rgba(11,30,61,0.85)';
-  });
-</script>
-</body>
-</html>
