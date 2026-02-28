@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buiten.ai — European Clinical Governance Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:     #0B1E3D;
+    --navy-mid: #162B52;
+    --navy-lt:  #1E3A6A;
+    --slate:    #8A9BB5;
+    --silver:   #D0D9E8;
+    --white:    #F5F7FA;
+    --pure:     #FFFFFF;
+    --green:    #2DCE7B;
+    --yellow:   #F5C840;
+    --red:      #E8524A;
+    --gold:     #C9A84C;
+    --border:   rgba(255,255,255,0.08);
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:  'DM Sans', system-ui, sans-serif;
+    --font-mono:  'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: var(--navy-lt); border-radius: 2px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px;
+    height: 72px;
+    background: rgba(11,30,61,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--pure);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--pure); }
+  .nav-cta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 40%, rgba(30,58,106,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.07) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-left {
+    padding: 160px 60px 100px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 6px 14px; width: fit-content;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+  h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--pure);
+    margin-bottom: 28px;
+  }
+  h1 em { font-style: italic; color: var(--silver); }
+  .hero-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--slate);
+    max-width: 440px;
+    margin-bottom: 48px;
+    line-height: 1.75;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    padding: 14px 28px;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-primary:hover { background: #d4af5c; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--silver);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px 28px;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--silver); color: var(--pure); }
+
+  /* Hero Right — Architecture Diagram */
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 2;
+    padding: 80px 60px 80px 20px;
+  }
+  .arch-diagram {
+    width: 100%; max-width: 420px;
+    position: relative;
+  }
+  .arch-core {
+    background: rgba(22,43,82,0.8);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 28px 32px;
+    text-align: center;
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .arch-core::before {
+    content: 'BUITEN.AI';
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+    color: var(--gold); background: var(--navy); padding: 0 12px;
+  }
+  .arch-core-inner {
+    font-family: var(--font-serif);
+    font-size: 1rem; font-weight: 300; color: var(--silver);
+    line-height: 1.5;
+  }
+  .arch-core-inner strong { font-weight: 600; color: var(--pure); display: block; font-size: 1.1rem; }
+  .arch-row {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-top: 4px;
+  }
+  .arch-module {
+    background: rgba(14,26,50,0.9);
+    border: 1px solid var(--border);
+    padding: 20px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .arch-module:hover { border-color: rgba(201,168,76,0.4); background: rgba(22,43,82,0.9); }
+  .arch-module.arts { border-top: 2px solid var(--green); }
+  .arch-module.score { border-top: 2px solid var(--gold); }
+  .arch-module.claims { border-top: 2px solid var(--yellow); }
+  .arch-module-label {
+    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .arts .arch-module-label { color: var(--green); }
+  .score .arch-module-label { color: var(--gold); }
+  .claims .arch-module-label { color: var(--yellow); }
+  .arch-module-name { font-size: 0.7rem; font-weight: 500; color: var(--silver); }
+  .arch-module-desc { font-size: 0.6rem; color: var(--slate); margin-top: 4px; line-height: 1.4; }
+
+  .signal-row {
+    display: flex; justify-content: center; gap: 8px; margin-top: 16px;
+  }
+  .signal {
+    display: flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+    color: var(--slate);
+  }
+  .signal-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    animation: blink 3s infinite;
+  }
+  .signal-dot.g { background: var(--green); animation-delay: 0s; }
+  .signal-dot.y { background: var(--yellow); animation-delay: 1s; }
+  .signal-dot.r { background: var(--red); animation-delay: 2s; }
+  @keyframes blink {
+    0%, 90%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ─── NOT SECTION ─── */
+  .not-section {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 60px;
+  }
+  .not-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .not-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--slate); margin-bottom: 20px;
+  }
+  .not-title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem; font-weight: 300; line-height: 1.25;
+    color: var(--pure); margin-bottom: 16px;
+  }
+  .not-desc { font-size: 0.9rem; color: var(--slate); line-height: 1.8; }
+  .not-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .not-list li {
+    display: flex; align-items: flex-start; gap: 16px;
+    font-size: 0.85rem; line-height: 1.5;
+  }
+  .not-list li .icon {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; color: var(--slate);
+    margin-top: 1px;
+  }
+  .not-list li .text-strong { color: var(--silver); font-weight: 500; display: block; }
+  .not-list li .text-sub { color: var(--slate); font-size: 0.78rem; }
+
+  /* ─── SECTION TEMPLATE ─── */
+  section { padding: 100px 60px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 64px; }
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; display: block;
+  }
+  h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2;
+    color: var(--pure);
+  }
+  h2 em { font-style: italic; color: var(--silver); }
+  .section-desc { font-size: 0.95rem; color: var(--slate); max-width: 580px; line-height: 1.8; margin-top: 16px; }
+
+  /* ─── THREE PILLARS ─── */
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-top: 4px;
+  }
+  .pillar {
+    background: var(--navy-mid);
+    border-top: 3px solid transparent;
+    padding: 48px 36px;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .pillar::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .pillar:hover::after { width: 100%; }
+  .pillar:hover { background: rgba(30,58,106,0.5); }
+  .pillar.p1 { border-top-color: #4B9EF4; }
+  .pillar.p2 { border-top-color: var(--gold); }
+  .pillar.p3 { border-top-color: var(--green); }
+  .pillar-num {
+    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em;
+    color: var(--slate); margin-bottom: 24px;
+  }
+  .pillar-icon { font-size: 1.8rem; margin-bottom: 20px; opacity: 0.9; }
+  h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem; font-weight: 400; line-height: 1.3;
+    color: var(--pure); margin-bottom: 14px;
+  }
+  .pillar p { font-size: 0.85rem; color: var(--slate); line-height: 1.75; margin-bottom: 28px; }
+  .pillar-link {
+    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: gap 0.2s;
+  }
+  .pillar-link:hover { gap: 14px; }
+
+  /* ─── PORTALS ─── */
+  .portals { background: rgba(10,20,40,0.6); }
+  .portals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .portal-card {
+    border: 1px solid var(--border);
+    background: rgba(22,43,82,0.3);
+    padding: 40px 32px;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .portal-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    background: rgba(22,43,82,0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .portal-card.arts .portal-accent { background: var(--green); }
+  .portal-card.score .portal-accent { background: var(--gold); }
+  .portal-card.claims .portal-accent { background: var(--yellow); }
+  .portal-accent {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  }
+  .portal-domain {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+  .portal-card.arts .portal-domain { color: var(--green); }
+  .portal-card.score .portal-domain { color: var(--gold); }
+  .portal-card.claims .portal-domain { color: var(--yellow); }
+  .portal-audience {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--slate); margin-bottom: 12px;
+  }
+  .portal-card h3 { font-size: 1.3rem; margin-bottom: 16px; }
+  .portal-card p { font-size: 0.82rem; color: var(--slate); line-height: 1.75; margin-bottom: 28px; }
+  .portal-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+  .portal-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.78rem; color: var(--silver);
+  }
+  .portal-features li::before { content: '—'; color: var(--slate); font-size: 0.7rem; }
+  .portal-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--pure); border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 18px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .portal-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── MATRIX TABLE ─── */
+  .matrix-section { background: var(--navy); }
+  .matrix-layout {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;
+  }
+  .matrix-intro { position: sticky; top: 100px; }
+  .matrix-intro h2 { margin-bottom: 20px; }
+  .matrix-intro p { font-size: 0.9rem; color: var(--slate); line-height: 1.8; margin-bottom: 16px; }
+  .tdi-box {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-left: 3px solid var(--gold);
+    padding: 24px;
+    margin-top: 32px;
+  }
+  .tdi-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+  .tdi-name { font-family: var(--font-serif); font-size: 1.1rem; color: var(--pure); margin-bottom: 8px; }
+  .tdi-desc { font-size: 0.78rem; color: var(--slate); line-height: 1.6; }
+
+  .matrix-table-wrap { overflow-x: auto; }
+  .matrix-title {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--slate); margin-bottom: 16px;
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  thead th {
+    background: var(--navy-lt);
+    padding: 14px 16px;
+    text-align: left;
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; font-weight: 400;
+    color: var(--slate); text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  thead th:first-child { color: var(--silver); }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; }
+  tbody tr:hover { background: rgba(30,58,106,0.3); }
+  tbody td { padding: 16px 16px; color: var(--silver); vertical-align: top; line-height: 1.5; }
+  tbody td:first-child { color: var(--pure); font-weight: 500; }
+  .confidence-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 0;
+  }
+  .confidence-badge.high { background: rgba(45,206,123,0.1); color: var(--green); border: 1px solid rgba(45,206,123,0.3); }
+  .confidence-badge.moderate { background: rgba(201,168,76,0.1); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+  .confidence-badge.low { background: rgba(232,82,74,0.1); color: var(--red); border: 1px solid rgba(232,82,74,0.3); }
+  .confidence-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+  /* ─── RISK ADJUSTMENT ─── */
+  .risk-cards {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 48px;
+  }
+  .risk-card {
+    background: var(--navy-mid); padding: 28px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .risk-icon { font-size: 1.4rem; margin-bottom: 14px; }
+  .risk-name { font-size: 0.8rem; font-weight: 500; color: var(--pure); margin-bottom: 8px; }
+  .risk-desc { font-size: 0.73rem; color: var(--slate); line-height: 1.6; }
+
+  /* ─── GOVERNANCE ─── */
+  .governance-section { background: var(--navy-mid); }
+  .governance-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .gov-block {
+    background: rgba(11,30,61,0.6);
+    padding: 40px 36px;
+    border-left: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+  }
+  .gov-block:nth-child(odd) { border-left: none; }
+  .gov-num {
+    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.2em;
+    color: var(--slate); margin-bottom: 20px;
+  }
+  .gov-block h3 { font-size: 1.2rem; margin-bottom: 12px; }
+  .gov-block p { font-size: 0.83rem; color: var(--slate); line-height: 1.75; }
+  .gov-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .tag {
+    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+    color: var(--slate); border: 1px solid var(--border);
+    padding: 4px 10px;
+  }
+
+  /* ─── PILOT ─── */
+  .pilot-section { background: var(--navy); }
+  .pilot-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .corridor-visual {
+    background: var(--navy-mid); border: 1px solid var(--border);
+    padding: 40px; position: relative;
+  }
+  .corridor-title {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+  }
+  .corridor-cities { display: flex; align-items: center; gap: 0; }
+  .city-block { flex: 1; }
+  .city-name { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 300; color: var(--pure); }
+  .city-country { font-size: 0.7rem; color: var(--slate); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .corridor-line {
+    flex: 0 0 auto;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 0 20px;
+  }
+  .cline {
+    width: 60px; height: 1px; background: linear-gradient(90deg, var(--green), var(--gold));
+    position: relative;
+  }
+  .cline::before, .cline::after {
+    content: ''; position: absolute; top: -3px;
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+  .cline::before { left: 0; background: var(--green); }
+  .cline::after { right: 0; background: var(--gold); }
+  .corridor-distance {
+    font-family: var(--font-mono); font-size: 0.55rem; color: var(--slate); margin-top: 8px; letter-spacing: 0.15em;
+  }
+
+  .flow-steps { margin-top: 40px; }
+  .flow-step {
+    display: flex; gap: 20px; padding: 16px 0;
+    border-top: 1px solid var(--border);
+  }
+  .flow-step:last-child { border-bottom: 1px solid var(--border); }
+  .step-num {
+    flex-shrink: 0;
+    font-family: var(--font-mono); font-size: 0.62rem; color: var(--gold);
+    width: 24px; margin-top: 2px;
+  }
+  .step-content h4 { font-size: 0.85rem; font-weight: 500; color: var(--pure); margin-bottom: 4px; }
+  .step-content p { font-size: 0.78rem; color: var(--slate); line-height: 1.6; }
+
+  .pilot-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 32px; }
+  .stat-block { background: var(--navy-mid); padding: 24px 20px; }
+  .stat-val {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 300; color: var(--pure);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 0.72rem; color: var(--slate); line-height: 1.4; }
+
+  /* ─── SIGNAL LEGEND ─── */
+  .signal-section {
+    background: var(--navy-lt);
+    padding: 60px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .signal-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 3fr; gap: 60px; align-items: center;
+  }
+  .signal-intro h3 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--pure); margin-bottom: 8px; }
+  .signal-intro p { font-size: 0.8rem; color: var(--slate); line-height: 1.7; }
+  .signals-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .sig-card {
+    background: rgba(11,30,61,0.6); border: 1px solid var(--border);
+    padding: 24px 20px; position: relative; overflow: hidden;
+  }
+  .sig-card.green { border-top: 2px solid var(--green); }
+  .sig-card.yellow { border-top: 2px solid var(--yellow); }
+  .sig-card.red { border-top: 2px solid var(--red); }
+  .sig-dot-large {
+    width: 12px; height: 12px; border-radius: 50%;
+    margin-bottom: 12px;
+  }
+  .sig-card.green .sig-dot-large { background: var(--green); box-shadow: 0 0 12px var(--green); }
+  .sig-card.yellow .sig-dot-large { background: var(--yellow); box-shadow: 0 0 12px var(--yellow); }
+  .sig-card.red .sig-dot-large { background: var(--red); box-shadow: 0 0 12px var(--red); }
+  .sig-label {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .sig-card.green .sig-label { color: var(--green); }
+  .sig-card.yellow .sig-label { color: var(--yellow); }
+  .sig-card.red .sig-label { color: var(--red); }
+  .sig-card h4 { font-size: 0.9rem; font-weight: 500; color: var(--pure); margin-bottom: 8px; }
+  .sig-card p { font-size: 0.75rem; color: var(--slate); line-height: 1.6; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: rgba(6,14,30,0.95);
+    border-top: 1px solid var(--border);
+    padding: 64px 60px 40px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+    max-width: 1200px; margin: 0 auto;
+    padding-bottom: 48px; border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  .footer-brand .nav-logo { display: block; margin-bottom: 16px; font-size: 1.1rem; }
+  .footer-brand p { font-size: 0.78rem; color: var(--slate); line-height: 1.7; max-width: 280px; }
+  .footer-col h4 {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--slate); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { font-size: 0.78rem; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--silver); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-bottom p { font-size: 0.7rem; color: var(--slate); }
+  .footer-reg {
+    display: flex; gap: 12px;
+  }
+  .reg-badge {
+    font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.12em;
+    color: var(--slate); border: 1px solid var(--border); padding: 4px 10px;
+  }
+
+  /* ─── ENTRANCE ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+  /* ─── DIVIDER ─── */
+  .rule {
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--slate);
+    max-width: 1200px; margin: 0 auto 48px;
+  }
+  .rule::before, .rule::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 30px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    section { padding: 70px 30px; }
+    .pillar, .portals-grid, .pillars-grid { grid-template-columns: 1fr; }
+    .portals-grid, .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .matrix-layout, .pilot-layout, .not-inner { grid-template-columns: 1fr; }
+    .governance-grid { grid-template-columns: 1fr; }
+    .risk-cards { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .signal-inner { grid-template-columns: 1fr; }
+    .signals-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .pillars-grid, .portals-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2.4rem; }
+    nav { padding: 0 20px; }
+    section { padding: 60px 20px; }
+    .not-section { padding: 50px 20px; }
+    footer { padding: 50px 20px 30px; }
+    .footer-top { grid-template-columns: 1fr; }
+    .pilot-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="#" class="nav-logo">Buiten<span>.</span>ai</a>
+  <ul class="nav-links">
+    <li><a href="#pillars">Framework</a></li>
+    <li><a href="#portals">Interfaces</a></li>
+    <li><a href="#matrix">Methodology</a></li>
+    <li><a href="#governance">Governance</a></li>
+    <li><a href="#pilot">Pilot</a></li>
+  </ul>
+  <a href="#portals" class="nav-cta">Access Portals</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">Prototype · Governance Infrastructure</div>
+    <h1>
+      European Clinical<br>
+      Governance <em>Infrastructure</em><br>
+      for Cross-Border Care
+    </h1>
+    <p class="hero-desc">
+      Structured comparability, risk-adjusted fairness, and supervised transparency — designed for the evolving European healthcare corridor.
+    </p>
+    <div class="hero-actions">
+      <a href="#pilot" class="btn-primary">View Model Corridor →</a>
+      <a href="#" class="btn-outline">Download White Paper</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="arch-diagram">
+      <div class="arch-core">
+        <div class="arch-core-inner">
+          <strong>Buiten.ai</strong>
+          Governance Infrastructure Layer
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-module arts">
+          <div class="arch-module-label">buitenarts</div>
+          <div class="arch-module-name">GP Referral</div>
+          <div class="arch-module-desc">Gatekeeper continuity</div>
+        </div>
+        <div class="arch-module score">
+          <div class="arch-module-label">buitenscore</div>
+          <div class="arch-module-name">Hospital</div>
+          <div class="arch-module-desc">Compliance dashboard</div>
+        </div>
+        <div class="arch-module claims">
+          <div class="arch-module-label">buitenclaims</div>
+          <div class="arch-module-name">Insurer</div>
+          <div class="arch-module-desc">Claims governance</div>
+        </div>
+      </div>
+      <div class="signal-row">
+        <div class="signal"><span class="signal-dot g"></span>ALIGNMENT</div>
+        <div class="signal"><span class="signal-dot y"></span>VARIANCE</div>
+        <div class="signal"><span class="signal-dot r"></span>DIVERGENCE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NOT SECTION ═══ -->
+<div class="not-section">
+  <div class="not-inner">
+    <div>
+      <div class="not-label">§ Institutional Definition</div>
+      <h2 class="not-title">What Buiten.ai<br>is — and is not.</h2>
+      <p class="not-desc">This infrastructure is defined as much by its boundaries as by its purpose. Clarity is governance.</p>
+    </div>
+    <ul class="not-list">
+      <li>
+        <div class="icon">✕</div>
+        <div><span class="text-strong">Not a healthcare provider</span><span class="text-sub">No clinical services are delivered. No patient relationships are formed.</span></div>
+      </li>
+      <li>
+        <div class="icon">✕</div>
+        <div><span class="text-strong">Not an insurer or claims engine</span><span class="text-sub">Reimbursement decisions remain under human institutional authority.</span></div>
+      </li>
+      <li>
+        <div class="icon">✕</div>
+        <div><span class="text-strong">Not a hospital ranking authority</span><span class="text-sub">No public league tables. No institutional scoring for external audiences.</span></div>
+      </li>
+      <li>
+        <div class="icon">✕</div>
+        <div><span class="text-strong">Not a centralized data repository</span><span class="text-sub">Identity data remains within originating systems. Coordination without concentration.</span></div>
+      </li>
+      <li>
+        <div class="icon">✓</div>
+        <div><span class="text-strong">A structured governance layer</span><span class="text-sub">Supervised comparability infrastructure connecting clinical, institutional, and insurance actors.</span></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ THREE PILLARS ═══ -->
+<section id="pillars">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">§ Core Framework</span>
+      <h2>Three Pillars of<br><em>Structured Comparability</em></h2>
+      <p class="section-desc">Each pillar addresses a distinct systemic failure in cross-border healthcare — together forming an integrated governance architecture.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar p1 fade-up">
+        <div class="pillar-num">01 —</div>
+        <div class="pillar-icon">⬡</div>
+        <h3>Clinical Comparability</h3>
+        <p>The Indication Matrix structures clinical equivalence across divergent national thresholds — without imposing protocols or overriding physician judgment. Divergence is measured, not judged.</p>
+        <a href="#matrix" class="pillar-link">Explore the Matrix →</a>
+      </div>
+      <div class="pillar p2 fade-up">
+        <div class="pillar-num">02 —</div>
+        <div class="pillar-icon">◈</div>
+        <h3>Financial Predictability</h3>
+        <p>The Insurance Sustainability Framework transforms volatile cross-border claims into structured, risk-adjusted signals — reducing reserve uncertainty, shortening review cycles, and stabilizing actuarial forecasting.</p>
+        <a href="#portals" class="pillar-link">Insurance Interface →</a>
+      </div>
+      <div class="pillar p3 fade-up">
+        <div class="pillar-num">03 —</div>
+        <div class="pillar-icon">◻</div>
+        <h3>Institutional Transparency</h3>
+        <p>Participating hospitals gain structured internal visibility through the compliance dashboard — enabling learning, not exposure. Complexity is contextualized, never penalized. Autonomy remains intact.</p>
+        <a href="#portals" class="pillar-link">Hospital Dashboard →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTALS ═══ -->
+<section id="portals" class="portals">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">§ Modular Interfaces</span>
+      <h2>Role-Separated<br><em>Access Portals</em></h2>
+      <p class="section-desc">Three operationally distinct interfaces — each purpose-bound, role-restricted, and governed by the shared infrastructure architecture.</p>
+    </div>
+    <div class="portals-grid">
+      <div class="portal-card arts">
+        <div class="portal-accent"></div>
+        <div class="portal-domain">buitenarts.com</div>
+        <div class="portal-audience">For General Practitioners</div>
+        <h3>Clinical Referral Interface</h3>
+        <p>Preserve gatekeeper continuity across borders. Initiate structured, privacy-preserving referrals with encrypted token generation — no personal identifiers transmitted.</p>
+        <ul class="portal-features">
+          <li>Minimum dataset capture protocol</li>
+          <li>Encrypted referral token generation</li>
+          <li>Identity-data architectural separation</li>
+          <li>Secure report return to originating GP</li>
+        </ul>
+        <a href="#" class="portal-btn">Access Interface →</a>
+      </div>
+      <div class="portal-card score">
+        <div class="portal-accent"></div>
+        <div class="portal-domain">buitenscore.com</div>
+        <div class="portal-audience">For Hospitals & Clinical Institutions</div>
+        <h3>Institutional Compliance Dashboard</h3>
+        <p>Internal governance visibility for structured alignment. Understand how your escalation thresholds compare — without public exposure, without loss of autonomy.</p>
+        <ul class="portal-features">
+          <li>Indication Alignment Indicators</li>
+          <li>Risk-adjusted complication context</li>
+          <li>Longitudinal variance trend analysis</li>
+          <li>Academic recalibration pathway access</li>
+        </ul>
+        <a href="#" class="portal-btn">Access Dashboard →</a>
+      </div>
+      <div class="portal-card claims">
+        <div class="portal-accent"></div>
+        <div class="portal-domain">buitenclaims.com</div>
+        <div class="portal-audience">For Insurers & Review Teams</div>
+        <h3>Claims Governance Engine</h3>
+        <p>Structure your cross-border review process. Signal-based variance detection enables proportional audit allocation — focus resources where genuine divergence occurs.</p>
+        <ul class="portal-features">
+          <li>Structured alignment & variance signals</li>
+          <li>Coding reliability indicators</li>
+          <li>Complication context analysis</li>
+          <li>Financial concordance alerts</li>
+        </ul>
+        <a href="#" class="portal-btn">Access Engine →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SIGNAL LEGEND ═══ -->
+<div class="signal-section">
+  <div class="signal-inner">
+    <div class="signal-intro">
+      <h3>Governance Signals</h3>
+      <p>AI produces structured, explainable signals. No automated decisions. Every output includes trigger parameter, reference threshold, divergence metric, and risk-adjustment modifier.</p>
+    </div>
+    <div class="signals-grid">
+      <div class="sig-card green">
+        <div class="sig-dot-large"></div>
+        <div class="sig-label">Signal Green</div>
+        <h4>Alignment</h4>
+        <p>Clinical escalation falls within structured reference thresholds. Documentation complete. Conservative pathway confirmed.</p>
+      </div>
+      <div class="sig-card yellow">
+        <div class="sig-dot-large"></div>
+        <div class="sig-label">Signal Yellow</div>
+        <h4>Contextual Variance</h4>
+        <p>Divergence detected. Contextual review recommended. Risk-adjustment modifiers applied before signal generation.</p>
+      </div>
+      <div class="sig-card red">
+        <div class="sig-dot-large"></div>
+        <div class="sig-label">Signal Red</div>
+        <h4>Significant Divergence</h4>
+        <p>Structural divergence exceeds reference threshold. Prioritized human review required. No automated consequence.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ INDICATION MATRIX ═══ -->
+<section id="matrix" class="matrix-section">
+  <div class="section-inner">
+    <div class="matrix-layout">
+      <div class="matrix-intro">
+        <span class="section-tag">§ Scientific Methodology</span>
+        <h2>The Indication<br><em>Matrix</em></h2>
+        <p>The clinical backbone of the infrastructure. Each procedural cluster is decomposed into measurable decision nodes — compared across systems to quantify structural divergence without declaring error.</p>
+        <p>The matrix evolves through continuous academic recalibration. It is a living governance instrument, not a fixed protocol.</p>
+        <div class="tdi-box">
+          <div class="tdi-label">TDI — Threshold Divergence Index</div>
+          <div class="tdi-name">Proportional deviation from structured reference threshold</div>
+          <div class="tdi-desc">High divergence triggers transparency and review recommendation — not automatic sanction. Ambiguity increases oversight intensity, never presumption of misconduct.</div>
+        </div>
+      </div>
+      <div>
+        <div class="matrix-title">// Example: Lumbar Disc Herniation — NL–TR Corridor</div>
+        <div class="matrix-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Decision Node</th>
+                <th>NL Reference</th>
+                <th>TR Kayseri</th>
+                <th>Mapping</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Conservative therapy duration</td>
+                <td>≥ 6 weeks documented</td>
+                <td>≥ 6 weeks documented</td>
+                <td><span class="confidence-badge high">High</span></td>
+              </tr>
+              <tr>
+                <td>Neurological deficit documentation</td>
+                <td>Mandatory pre-escalation</td>
+                <td>Mandatory pre-escalation</td>
+                <td><span class="confidence-badge high">High</span></td>
+              </tr>
+              <tr>
+                <td>MRI confirmation requirement</td>
+                <td>Required within 3 months</td>
+                <td>Required, timing flexible</td>
+                <td><span class="confidence-badge moderate">Moderate</span></td>
+              </tr>
+              <tr>
+                <td>Red-flag symptom criteria</td>
+                <td>Standardized NICE-aligned</td>
+                <td>Partially standardized</td>
+                <td><span class="confidence-badge moderate">Moderate</span></td>
+              </tr>
+              <tr>
+                <td>Escalation timing threshold</td>
+                <td>Defined in DBC pathway</td>
+                <td>Specialist discretion-based</td>
+                <td><span class="confidence-badge low">Low — Manual Review</span></td>
+              </tr>
+              <tr>
+                <td>Failed conservative documentation</td>
+                <td>Structured GP record</td>
+                <td>Variable documentation format</td>
+                <td><span class="confidence-badge low">Low — Manual Review</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-tag" style="margin-top: 48px;">§ Risk Adjustment Variables</div>
+        <div class="risk-cards">
+          <div class="risk-card">
+            <div class="risk-icon">◑</div>
+            <div class="risk-name">Age-Weighted Baseline</div>
+            <div class="risk-desc">Physiological reserve modeled by age cohort before outcome comparison.</div>
+          </div>
+          <div class="risk-card">
+            <div class="risk-icon">⊕</div>
+            <div class="risk-name">Comorbidity Indexing</div>
+            <div class="risk-desc">Concurrent condition burden integrated into expected outcome baseline.</div>
+          </div>
+          <div class="risk-card">
+            <div class="risk-icon">◻</div>
+            <div class="risk-name">Frailty Calibration</div>
+            <div class="risk-desc">Frailty markers adjusted to prevent penalizing high-dependency populations.</div>
+          </div>
+          <div class="risk-card">
+            <div class="risk-icon">⬡</div>
+            <div class="risk-name">Case-Mix Normalization</div>
+            <div class="risk-desc">Tertiary centre complexity contextualized — never compared as equivalent to routine care.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOVERNANCE ═══ -->
+<section id="governance" class="governance-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">§ Governance & AI Ethics</span>
+      <h2>Accountability<br><em>Before Automation</em></h2>
+      <p class="section-desc">Designed for high-sensitivity healthcare environments. AI functions as a supervised analytical layer — never as a decision authority.</p>
+    </div>
+    <div class="governance-grid">
+      <div class="gov-block">
+        <div class="gov-num">01 —</div>
+        <h3>Human-in-the-Loop Architecture</h3>
+        <p>Every governance signal is supervised. No reimbursement decision, institutional evaluation, or compliance signal is executed without human oversight. Final decisions remain with insurance institutions, clinical review boards, and governance bodies.</p>
+        <div class="gov-tags">
+          <span class="tag">Mandatory Supervision</span>
+          <span class="tag">No Auto-Approval</span>
+          <span class="tag">Institutional Authority</span>
+        </div>
+      </div>
+      <div class="gov-block">
+        <div class="gov-num">02 —</div>
+        <h3>Explainable AI (XAI) Protocols</h3>
+        <p>No opaque probability scores are delivered without traceable reasoning. Each signal includes its trigger parameter, reference threshold, divergence metric, risk-adjustment modifier, and mapping confidence level. Transparency is structural, not optional.</p>
+        <div class="gov-tags">
+          <span class="tag">Full Signal Traceability</span>
+          <span class="tag">Audit Pathways</span>
+          <span class="tag">Version Control</span>
+        </div>
+      </div>
+      <div class="gov-block">
+        <div class="gov-num">03 —</div>
+        <h3>EU AI Act & GDPR Alignment</h3>
+        <p>Designed under high-accountability AI governance principles with GDPR data minimisation standards and purpose limitation requirements. Role-based access control ensures data remains purpose-bound across all operational layers.</p>
+        <div class="gov-tags">
+          <span class="tag">EU AI Act Principles</span>
+          <span class="tag">GDPR Compliant</span>
+          <span class="tag">Data Minimisation</span>
+        </div>
+      </div>
+      <div class="gov-block">
+        <div class="gov-num">04 —</div>
+        <h3>Bias Monitoring & Fairness Controls</h3>
+        <p>Periodic evaluation of signal distribution asymmetry, specialty-level variance, and institutional clustering effects. High-complexity centres treating difficult populations are protected by architectural design — complexity is contextualized, not penalized.</p>
+        <div class="gov-tags">
+          <span class="tag">Signal Distribution Audit</span>
+          <span class="tag">Specialty Variance Review</span>
+          <span class="tag">Complexity Protection</span>
+        </div>
+      </div>
+      <div class="gov-block">
+        <div class="gov-num">05 —</div>
+        <h3>Academic Oversight Consortium</h3>
+        <p>The Indication Matrix is developed and recalibrated by an academic consortium under periodic review to ensure clinical validity, evidence alignment, threshold updates, and risk adjustment recalibration. Institutions may initiate recalibration dialogue.</p>
+        <div class="gov-tags">
+          <span class="tag">Living Governance Instrument</span>
+          <span class="tag">Evidence Integration</span>
+          <span class="tag">Institutional Challenge Rights</span>
+        </div>
+      </div>
+      <div class="gov-block">
+        <div class="gov-num">06 —</div>
+        <h3>Coordination Without Concentration</h3>
+        <p>Identity data never crosses borders. Encrypted tokenization ensures no personal identifiers are transmitted. Each operational layer is separated by role with restricted data access privileges. Cross-domain data aggregation is prevented by architectural design.</p>
+        <div class="gov-tags">
+          <span class="tag">Zero Cross-Border Identity</span>
+          <span class="tag">Tokenized Architecture</span>
+          <span class="tag">Role Separation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PILOT ═══ -->
+<section id="pilot" class="pilot-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">§ Model Corridor Prototype</span>
+      <h2>Kayseri — Dordrecht<br><em>Governance Sandbox</em></h2>
+      <p class="section-desc">The first validation corridor structures an already-existing migration-linked care flow. The pilot does not create mobility — it structures a pattern that exists.</p>
+    </div>
+    <div class="pilot-layout">
+      <div>
+        <div class="corridor-visual">
+          <div class="corridor-title">// Active Validation Corridor — Phase 1</div>
+          <div class="corridor-cities">
+            <div class="city-block">
+              <div class="city-name">Kayseri</div>
+              <div class="city-country">Türkiye</div>
+            </div>
+            <div class="corridor-line">
+              <div class="cline"></div>
+              <div class="corridor-distance">~2,700 KM</div>
+            </div>
+            <div class="city-block" style="text-align:right">
+              <div class="city-name">Dordrecht</div>
+              <div class="city-country">Netherlands</div>
+            </div>
+          </div>
+
+          <div class="flow-steps">
+            <div class="flow-step">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4>Patient contacts Dutch family physician</h4>
+                <p>GP evaluates clinical necessity of examination in Kayseri under existing gatekeeper logic.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4>Encrypted referral token generated</h4>
+                <p>No personal identifiers cross borders. Identity and clinical data are architecturally separated.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4>Clinical assessment in Kayseri</h4>
+                <p>Participating clinical partner operates under pre-alignment training and documentation standards.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="step-num">04</div>
+              <div class="step-content">
+                <h4>Report returns to originating GP</h4>
+                <p>Clinical report transmitted directly back to the Dutch GP system. Gatekeeper continuity preserved.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="step-num">05</div>
+              <div class="step-content">
+                <h4>Governance signal generated</h4>
+                <p>Indication alignment, complication context, and mapping confidence evaluated under supervised AI architecture.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="pilot-stats">
+          <div class="stat-block">
+            <div class="stat-val">Phase 1</div>
+            <div class="stat-label">Active corridor validation in Kayseri–Dordrecht corridor</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-val">4</div>
+            <div class="stat-label">Expansion phases toward multi-corridor European network</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-val">0</div>
+            <div class="stat-label">Personal identifiers transmitted cross-border</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-val">∞</div>
+            <div class="stat-label">Institutional autonomy preserved throughout participation</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <span class="section-tag">§ Validation Metrics</span>
+          <p style="font-size: 0.85rem; color: var(--slate); line-height: 1.8; margin-top: 12px; margin-bottom: 24px;">The corridor measures signal consistency, inter-review agreement, variance reduction index, dispute cycle length, and institutional feedback. Expansion follows measurable validation — evidence before scale.</p>
+
+          <div style="background: var(--navy-mid); border: 1px solid var(--border); padding: 28px;">
+            <div class="section-tag" style="margin-bottom: 16px;">§ Phase-Based Expansion Roadmap</div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--green); border: 1px solid var(--green); padding: 2px 8px; flex-shrink: 0;">ACTIVE</span>
+                <span style="font-size: 0.8rem; color: var(--silver);">Phase 1 — NL–TR corridor validation</span>
+              </div>
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 2px 8px; flex-shrink: 0;">NEXT</span>
+                <span style="font-size: 0.8rem; color: var(--slate);">Phase 2 — Matrix recalibration & institutional onboarding</span>
+              </div>
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--slate); border: 1px solid var(--border); padding: 2px 8px; flex-shrink: 0;">PLANNED</span>
+                <span style="font-size: 0.8rem; color: var(--slate);">Phase 3 — Expanded corridor replication within Europe</span>
+              </div>
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--slate); border: 1px solid var(--border); padding: 2px 8px; flex-shrink: 0;">PLANNED</span>
+                <span style="font-size: 0.8rem; color: var(--slate);">Phase 4 — Multi-corridor structured governance network</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Buiten<span>.</span>ai</a>
+      <p>A European Clinical Governance Infrastructure prototype for structured cross-border healthcare comparability, transparency, and sustainability.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Framework</h4>
+      <ul>
+        <li><a href="#pillars">Three Pillars</a></li>
+        <li><a href="#matrix">Indication Matrix</a></li>
+        <li><a href="#governance">Governance & AI</a></li>
+        <li><a href="#pilot">Model Corridor</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Interfaces</h4>
+      <ul>
+        <li><a href="#">buitenarts.com</a></li>
+        <li><a href="#">buitenscore.com</a></li>
+        <li><a href="#">buitenclaims.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Documentation</h4>
+      <ul>
+        <li><a href="#">White Paper</a></li>
+        <li><a href="#">Governance & Oversight</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Hospital Participation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Buiten.ai — European Clinical Governance Infrastructure</p>
+    <div class="footer-reg">
+      <span class="reg-badge">EU AI Act Aligned</span>
+      <span class="reg-badge">GDPR Compliant</span>
+      <span class="reg-badge">EHDS Compatible</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav active state on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--pure)' : '';
+    });
+    // Nav background solidify
+    document.querySelector('nav').style.background =
+      window.scrollY > 60 ? 'rgba(11,30,61,0.98)' : 'rgba(11,30,61,0.85)';
+  });
+</script>
+</body>
+</html>
