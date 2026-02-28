@@ -37,12 +37,10 @@
     line-height: 1.6;
   }
 
-  /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--navy); }
   ::-webkit-scrollbar-thumb { background: var(--navy-lt); border-radius: 2px; }
 
-  /* ─── NAV ─── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -85,7 +83,6 @@
   }
   .nav-cta:hover { background: var(--gold); color: var(--navy); }
 
-  /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -169,7 +166,6 @@
   }
   .btn-outline:hover { border-color: var(--silver); color: var(--pure); }
 
-  /* Hero Right — Architecture Diagram */
   .hero-right {
     display: flex; align-items: center; justify-content: center;
     position: relative; z-index: 2;
@@ -245,7 +241,6 @@
     50% { opacity: 0.3; }
   }
 
-  /* ─── NOT SECTION ─── */
   .not-section {
     background: var(--navy-mid);
     border-top: 1px solid var(--border);
@@ -283,7 +278,6 @@
   .not-list li .text-strong { color: var(--silver); font-weight: 500; display: block; }
   .not-list li .text-sub { color: var(--slate); font-size: 0.78rem; }
 
-  /* ─── SECTION TEMPLATE ─── */
   section { padding: 100px 60px; }
   .section-inner { max-width: 1200px; margin: 0 auto; }
   .section-header { margin-bottom: 64px; }
@@ -300,7 +294,6 @@
   h2 em { font-style: italic; color: var(--silver); }
   .section-desc { font-size: 0.95rem; color: var(--slate); max-width: 580px; line-height: 1.8; margin-top: 16px; }
 
-  /* ─── THREE PILLARS ─── */
   .pillars-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
     margin-top: 4px;
@@ -343,7 +336,6 @@
   }
   .pillar-link:hover { gap: 14px; }
 
-  /* ─── PORTALS ─── */
   .portals { background: rgba(10,20,40,0.6); }
   .portals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .portal-card {
@@ -394,7 +386,6 @@
   }
   .portal-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-  /* ─── MATRIX TABLE ─── */
   .matrix-section { background: var(--navy); }
   .matrix-layout {
     display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;
@@ -418,10 +409,7 @@
     font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--slate); margin-bottom: 16px;
   }
-  table {
-    width: 100%; border-collapse: collapse;
-    font-size: 0.8rem;
-  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
   thead th {
     background: var(--navy-lt);
     padding: 14px 16px;
@@ -438,27 +426,19 @@
   .confidence-badge {
     display: inline-flex; align-items: center; gap: 6px;
     font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
-    padding: 3px 10px;
-    border-radius: 0;
+    padding: 3px 10px; border-radius: 0;
   }
   .confidence-badge.high { background: rgba(45,206,123,0.1); color: var(--green); border: 1px solid rgba(45,206,123,0.3); }
   .confidence-badge.moderate { background: rgba(201,168,76,0.1); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
   .confidence-badge.low { background: rgba(232,82,74,0.1); color: var(--red); border: 1px solid rgba(232,82,74,0.3); }
   .confidence-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 
-  /* ─── RISK ADJUSTMENT ─── */
-  .risk-cards {
-    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 48px;
-  }
-  .risk-card {
-    background: var(--navy-mid); padding: 28px 24px;
-    border-top: 1px solid var(--border);
-  }
+  .risk-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 48px; }
+  .risk-card { background: var(--navy-mid); padding: 28px 24px; border-top: 1px solid var(--border); }
   .risk-icon { font-size: 1.4rem; margin-bottom: 14px; }
   .risk-name { font-size: 0.8rem; font-weight: 500; color: var(--pure); margin-bottom: 8px; }
   .risk-desc { font-size: 0.73rem; color: var(--slate); line-height: 1.6; }
 
-  /* ─── GOVERNANCE ─── */
   .governance-section { background: var(--navy-mid); }
   .governance-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .gov-block {
@@ -468,166 +448,81 @@
     border-top: 1px solid var(--border);
   }
   .gov-block:nth-child(odd) { border-left: none; }
-  .gov-num {
-    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.2em;
-    color: var(--slate); margin-bottom: 20px;
-  }
+  .gov-num { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.2em; color: var(--slate); margin-bottom: 20px; }
   .gov-block h3 { font-size: 1.2rem; margin-bottom: 12px; }
   .gov-block p { font-size: 0.83rem; color: var(--slate); line-height: 1.75; }
   .gov-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
-  .tag {
-    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
-    color: var(--slate); border: 1px solid var(--border);
-    padding: 4px 10px;
-  }
+  .tag { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; color: var(--slate); border: 1px solid var(--border); padding: 4px 10px; }
 
-  /* ─── PILOT ─── */
   .pilot-section { background: var(--navy); }
   .pilot-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .corridor-visual {
-    background: var(--navy-mid); border: 1px solid var(--border);
-    padding: 40px; position: relative;
-  }
-  .corridor-title {
-    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 32px;
-  }
+  .corridor-visual { background: var(--navy-mid); border: 1px solid var(--border); padding: 40px; position: relative; }
+  .corridor-title { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
   .corridor-cities { display: flex; align-items: center; gap: 0; }
   .city-block { flex: 1; }
   .city-name { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 300; color: var(--pure); }
   .city-country { font-size: 0.7rem; color: var(--slate); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
-  .corridor-line {
-    flex: 0 0 auto;
-    display: flex; flex-direction: column; align-items: center;
-    padding: 0 20px;
-  }
-  .cline {
-    width: 60px; height: 1px; background: linear-gradient(90deg, var(--green), var(--gold));
-    position: relative;
-  }
-  .cline::before, .cline::after {
-    content: ''; position: absolute; top: -3px;
-    width: 6px; height: 6px; border-radius: 50%;
-  }
+  .corridor-line { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
+  .cline { width: 60px; height: 1px; background: linear-gradient(90deg, var(--green), var(--gold)); position: relative; }
+  .cline::before, .cline::after { content: ''; position: absolute; top: -3px; width: 6px; height: 6px; border-radius: 50%; }
   .cline::before { left: 0; background: var(--green); }
   .cline::after { right: 0; background: var(--gold); }
-  .corridor-distance {
-    font-family: var(--font-mono); font-size: 0.55rem; color: var(--slate); margin-top: 8px; letter-spacing: 0.15em;
-  }
+  .corridor-distance { font-family: var(--font-mono); font-size: 0.55rem; color: var(--slate); margin-top: 8px; letter-spacing: 0.15em; }
 
   .flow-steps { margin-top: 40px; }
-  .flow-step {
-    display: flex; gap: 20px; padding: 16px 0;
-    border-top: 1px solid var(--border);
-  }
+  .flow-step { display: flex; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); }
   .flow-step:last-child { border-bottom: 1px solid var(--border); }
-  .step-num {
-    flex-shrink: 0;
-    font-family: var(--font-mono); font-size: 0.62rem; color: var(--gold);
-    width: 24px; margin-top: 2px;
-  }
+  .step-num { flex-shrink: 0; font-family: var(--font-mono); font-size: 0.62rem; color: var(--gold); width: 24px; margin-top: 2px; }
   .step-content h4 { font-size: 0.85rem; font-weight: 500; color: var(--pure); margin-bottom: 4px; }
   .step-content p { font-size: 0.78rem; color: var(--slate); line-height: 1.6; }
 
   .pilot-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 32px; }
   .stat-block { background: var(--navy-mid); padding: 24px 20px; }
-  .stat-val {
-    font-family: var(--font-serif); font-size: 2rem; font-weight: 300; color: var(--pure);
-    line-height: 1; margin-bottom: 6px;
-  }
+  .stat-val { font-family: var(--font-serif); font-size: 2rem; font-weight: 300; color: var(--pure); line-height: 1; margin-bottom: 6px; }
   .stat-label { font-size: 0.72rem; color: var(--slate); line-height: 1.4; }
 
-  /* ─── SIGNAL LEGEND ─── */
-  .signal-section {
-    background: var(--navy-lt);
-    padding: 60px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .signal-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 3fr; gap: 60px; align-items: center;
-  }
+  .signal-section { background: var(--navy-lt); padding: 60px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .signal-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 3fr; gap: 60px; align-items: center; }
   .signal-intro h3 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--pure); margin-bottom: 8px; }
   .signal-intro p { font-size: 0.8rem; color: var(--slate); line-height: 1.7; }
   .signals-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  .sig-card {
-    background: rgba(11,30,61,0.6); border: 1px solid var(--border);
-    padding: 24px 20px; position: relative; overflow: hidden;
-  }
+  .sig-card { background: rgba(11,30,61,0.6); border: 1px solid var(--border); padding: 24px 20px; position: relative; overflow: hidden; }
   .sig-card.green { border-top: 2px solid var(--green); }
   .sig-card.yellow { border-top: 2px solid var(--yellow); }
   .sig-card.red { border-top: 2px solid var(--red); }
-  .sig-dot-large {
-    width: 12px; height: 12px; border-radius: 50%;
-    margin-bottom: 12px;
-  }
+  .sig-dot-large { width: 12px; height: 12px; border-radius: 50%; margin-bottom: 12px; }
   .sig-card.green .sig-dot-large { background: var(--green); box-shadow: 0 0 12px var(--green); }
   .sig-card.yellow .sig-dot-large { background: var(--yellow); box-shadow: 0 0 12px var(--yellow); }
   .sig-card.red .sig-dot-large { background: var(--red); box-shadow: 0 0 12px var(--red); }
-  .sig-label {
-    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-    margin-bottom: 6px;
-  }
+  .sig-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; }
   .sig-card.green .sig-label { color: var(--green); }
   .sig-card.yellow .sig-label { color: var(--yellow); }
   .sig-card.red .sig-label { color: var(--red); }
   .sig-card h4 { font-size: 0.9rem; font-weight: 500; color: var(--pure); margin-bottom: 8px; }
   .sig-card p { font-size: 0.75rem; color: var(--slate); line-height: 1.6; }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: rgba(6,14,30,0.95);
-    border-top: 1px solid var(--border);
-    padding: 64px 60px 40px;
-  }
-  .footer-top {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
-    max-width: 1200px; margin: 0 auto;
-    padding-bottom: 48px; border-bottom: 1px solid var(--border);
-    margin-bottom: 32px;
-  }
+  footer { background: rgba(6,14,30,0.95); border-top: 1px solid var(--border); padding: 64px 60px 40px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding-bottom: 48px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
   .footer-brand .nav-logo { display: block; margin-bottom: 16px; font-size: 1.1rem; }
   .footer-brand p { font-size: 0.78rem; color: var(--slate); line-height: 1.7; max-width: 280px; }
-  .footer-col h4 {
-    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--slate); margin-bottom: 16px;
-  }
+  .footer-col h4 { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); margin-bottom: 16px; }
   .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .footer-col a { font-size: 0.78rem; color: var(--slate); text-decoration: none; transition: color 0.2s; }
   .footer-col a:hover { color: var(--silver); }
-  .footer-bottom {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
   .footer-bottom p { font-size: 0.7rem; color: var(--slate); }
-  .footer-reg {
-    display: flex; gap: 12px;
-  }
-  .reg-badge {
-    font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.12em;
-    color: var(--slate); border: 1px solid var(--border); padding: 4px 10px;
-  }
+  .footer-reg { display: flex; gap: 12px; }
+  .reg-badge { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.12em; color: var(--slate); border: 1px solid var(--border); padding: 4px 10px; }
 
-  /* ─── ENTRANCE ANIMATIONS ─── */
-  .fade-up {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
   .fade-up:nth-child(2) { transition-delay: 0.1s; }
   .fade-up:nth-child(3) { transition-delay: 0.2s; }
   .fade-up:nth-child(4) { transition-delay: 0.3s; }
 
-  /* ─── DIVIDER ─── */
-  .rule {
-    display: flex; align-items: center; gap: 16px;
-    font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--slate);
-    max-width: 1200px; margin: 0 auto 48px;
-  }
+  .rule { display: flex; align-items: center; gap: 16px; font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--slate); max-width: 1200px; margin: 0 auto 48px; }
   .rule::before, .rule::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 1024px) {
     nav { padding: 0 30px; }
     .nav-links { display: none; }
@@ -657,7 +552,6 @@
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
 <nav>
   <a href="#" class="nav-logo">Buiten<span>.</span>ai</a>
   <ul class="nav-links">
@@ -670,27 +564,18 @@
   <a href="#portals" class="nav-cta">Access Portals</a>
 </nav>
 
-<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-
   <div class="hero-left">
     <div class="hero-badge">Prototype · Governance Infrastructure</div>
-    <h1>
-      European Clinical<br>
-      Governance <em>Infrastructure</em><br>
-      for Cross-Border Care
-    </h1>
-    <p class="hero-desc">
-      Structured comparability, risk-adjusted fairness, and supervised transparency — designed for the evolving European healthcare corridor.
-    </p>
+    <h1>European Clinical<br>Governance <em>Infrastructure</em><br>for Cross-Border Care</h1>
+    <p class="hero-desc">Structured comparability, risk-adjusted fairness, and supervised transparency — designed for the evolving European healthcare corridor.</p>
     <div class="hero-actions">
       <a href="#pilot" class="btn-primary">View Model Corridor →</a>
       <a href="#" class="btn-outline">Download White Paper</a>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="arch-diagram">
       <div class="arch-core">
@@ -725,7 +610,6 @@
   </div>
 </section>
 
-<!-- ═══ NOT SECTION ═══ -->
 <div class="not-section">
   <div class="not-inner">
     <div>
@@ -734,31 +618,15 @@
       <p class="not-desc">This infrastructure is defined as much by its boundaries as by its purpose. Clarity is governance.</p>
     </div>
     <ul class="not-list">
-      <li>
-        <div class="icon">✕</div>
-        <div><span class="text-strong">Not a healthcare provider</span><span class="text-sub">No clinical services are delivered. No patient relationships are formed.</span></div>
-      </li>
-      <li>
-        <div class="icon">✕</div>
-        <div><span class="text-strong">Not an insurer or claims engine</span><span class="text-sub">Reimbursement decisions remain under human institutional authority.</span></div>
-      </li>
-      <li>
-        <div class="icon">✕</div>
-        <div><span class="text-strong">Not a hospital ranking authority</span><span class="text-sub">No public league tables. No institutional scoring for external audiences.</span></div>
-      </li>
-      <li>
-        <div class="icon">✕</div>
-        <div><span class="text-strong">Not a centralized data repository</span><span class="text-sub">Identity data remains within originating systems. Coordination without concentration.</span></div>
-      </li>
-      <li>
-        <div class="icon">✓</div>
-        <div><span class="text-strong">A structured governance layer</span><span class="text-sub">Supervised comparability infrastructure connecting clinical, institutional, and insurance actors.</span></div>
-      </li>
+      <li><div class="icon">✕</div><div><span class="text-strong">Not a healthcare provider</span><span class="text-sub">No clinical services are delivered. No patient relationships are formed.</span></div></li>
+      <li><div class="icon">✕</div><div><span class="text-strong">Not an insurer or claims engine</span><span class="text-sub">Reimbursement decisions remain under human institutional authority.</span></div></li>
+      <li><div class="icon">✕</div><div><span class="text-strong">Not a hospital ranking authority</span><span class="text-sub">No public league tables. No institutional scoring for external audiences.</span></div></li>
+      <li><div class="icon">✕</div><div><span class="text-strong">Not a centralized data repository</span><span class="text-sub">Identity data remains within originating systems. Coordination without concentration.</span></div></li>
+      <li><div class="icon">✓</div><div><span class="text-strong">A structured governance layer</span><span class="text-sub">Supervised comparability infrastructure connecting clinical, institutional, and insurance actors.</span></div></li>
     </ul>
   </div>
 </div>
 
-<!-- ═══ THREE PILLARS ═══ -->
 <section id="pillars">
   <div class="section-inner">
     <div class="section-header">
@@ -792,7 +660,6 @@
   </div>
 </section>
 
-<!-- ═══ PORTALS ═══ -->
 <section id="portals" class="portals">
   <div class="section-inner">
     <div class="section-header">
@@ -813,7 +680,7 @@
           <li>Identity-data architectural separation</li>
           <li>Secure report return to originating GP</li>
         </ul>
-        <a href="#" class="portal-btn">Access Interface →</a>
+        <a href="https://buitenarts.com" class="portal-btn" target="_blank">Access Interface →</a>
       </div>
       <div class="portal-card score">
         <div class="portal-accent"></div>
@@ -827,7 +694,7 @@
           <li>Longitudinal variance trend analysis</li>
           <li>Academic recalibration pathway access</li>
         </ul>
-        <a href="#" class="portal-btn">Access Dashboard →</a>
+        <a href="https://buitenscore.com" class="portal-btn" target="_blank">Access Dashboard →</a>
       </div>
       <div class="portal-card claims">
         <div class="portal-accent"></div>
@@ -841,13 +708,12 @@
           <li>Complication context analysis</li>
           <li>Financial concordance alerts</li>
         </ul>
-        <a href="#" class="portal-btn">Access Engine →</a>
+        <a href="https://buitenclaims.com" class="portal-btn" target="_blank">Access Engine →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SIGNAL LEGEND ═══ -->
 <div class="signal-section">
   <div class="signal-inner">
     <div class="signal-intro">
@@ -877,7 +743,6 @@
   </div>
 </div>
 
-<!-- ═══ INDICATION MATRIX ═══ -->
 <section id="matrix" class="matrix-section">
   <div class="section-inner">
     <div class="matrix-layout">
@@ -896,84 +761,29 @@
         <div class="matrix-title">// Example: Lumbar Disc Herniation — NL–TR Corridor</div>
         <div class="matrix-table-wrap">
           <table>
-            <thead>
-              <tr>
-                <th>Decision Node</th>
-                <th>NL Reference</th>
-                <th>TR Kayseri</th>
-                <th>Mapping</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Decision Node</th><th>NL Reference</th><th>TR Kayseri</th><th>Mapping</th></tr></thead>
             <tbody>
-              <tr>
-                <td>Conservative therapy duration</td>
-                <td>≥ 6 weeks documented</td>
-                <td>≥ 6 weeks documented</td>
-                <td><span class="confidence-badge high">High</span></td>
-              </tr>
-              <tr>
-                <td>Neurological deficit documentation</td>
-                <td>Mandatory pre-escalation</td>
-                <td>Mandatory pre-escalation</td>
-                <td><span class="confidence-badge high">High</span></td>
-              </tr>
-              <tr>
-                <td>MRI confirmation requirement</td>
-                <td>Required within 3 months</td>
-                <td>Required, timing flexible</td>
-                <td><span class="confidence-badge moderate">Moderate</span></td>
-              </tr>
-              <tr>
-                <td>Red-flag symptom criteria</td>
-                <td>Standardized NICE-aligned</td>
-                <td>Partially standardized</td>
-                <td><span class="confidence-badge moderate">Moderate</span></td>
-              </tr>
-              <tr>
-                <td>Escalation timing threshold</td>
-                <td>Defined in DBC pathway</td>
-                <td>Specialist discretion-based</td>
-                <td><span class="confidence-badge low">Low — Manual Review</span></td>
-              </tr>
-              <tr>
-                <td>Failed conservative documentation</td>
-                <td>Structured GP record</td>
-                <td>Variable documentation format</td>
-                <td><span class="confidence-badge low">Low — Manual Review</span></td>
-              </tr>
+              <tr><td>Conservative therapy duration</td><td>≥ 6 weeks documented</td><td>≥ 6 weeks documented</td><td><span class="confidence-badge high">High</span></td></tr>
+              <tr><td>Neurological deficit documentation</td><td>Mandatory pre-escalation</td><td>Mandatory pre-escalation</td><td><span class="confidence-badge high">High</span></td></tr>
+              <tr><td>MRI confirmation requirement</td><td>Required within 3 months</td><td>Required, timing flexible</td><td><span class="confidence-badge moderate">Moderate</span></td></tr>
+              <tr><td>Red-flag symptom criteria</td><td>Standardized NICE-aligned</td><td>Partially standardized</td><td><span class="confidence-badge moderate">Moderate</span></td></tr>
+              <tr><td>Escalation timing threshold</td><td>Defined in DBC pathway</td><td>Specialist discretion-based</td><td><span class="confidence-badge low">Low — Manual Review</span></td></tr>
+              <tr><td>Failed conservative documentation</td><td>Structured GP record</td><td>Variable documentation format</td><td><span class="confidence-badge low">Low — Manual Review</span></td></tr>
             </tbody>
           </table>
         </div>
-
         <div class="section-tag" style="margin-top: 48px;">§ Risk Adjustment Variables</div>
         <div class="risk-cards">
-          <div class="risk-card">
-            <div class="risk-icon">◑</div>
-            <div class="risk-name">Age-Weighted Baseline</div>
-            <div class="risk-desc">Physiological reserve modeled by age cohort before outcome comparison.</div>
-          </div>
-          <div class="risk-card">
-            <div class="risk-icon">⊕</div>
-            <div class="risk-name">Comorbidity Indexing</div>
-            <div class="risk-desc">Concurrent condition burden integrated into expected outcome baseline.</div>
-          </div>
-          <div class="risk-card">
-            <div class="risk-icon">◻</div>
-            <div class="risk-name">Frailty Calibration</div>
-            <div class="risk-desc">Frailty markers adjusted to prevent penalizing high-dependency populations.</div>
-          </div>
-          <div class="risk-card">
-            <div class="risk-icon">⬡</div>
-            <div class="risk-name">Case-Mix Normalization</div>
-            <div class="risk-desc">Tertiary centre complexity contextualized — never compared as equivalent to routine care.</div>
-          </div>
+          <div class="risk-card"><div class="risk-icon">◑</div><div class="risk-name">Age-Weighted Baseline</div><div class="risk-desc">Physiological reserve modeled by age cohort before outcome comparison.</div></div>
+          <div class="risk-card"><div class="risk-icon">⊕</div><div class="risk-name">Comorbidity Indexing</div><div class="risk-desc">Concurrent condition burden integrated into expected outcome baseline.</div></div>
+          <div class="risk-card"><div class="risk-icon">◻</div><div class="risk-name">Frailty Calibration</div><div class="risk-desc">Frailty markers adjusted to prevent penalizing high-dependency populations.</div></div>
+          <div class="risk-card"><div class="risk-icon">⬡</div><div class="risk-name">Case-Mix Normalization</div><div class="risk-desc">Tertiary centre complexity contextualized — never compared as equivalent to routine care.</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ GOVERNANCE ═══ -->
 <section id="governance" class="governance-section">
   <div class="section-inner">
     <div class="section-header">
@@ -982,71 +792,16 @@
       <p class="section-desc">Designed for high-sensitivity healthcare environments. AI functions as a supervised analytical layer — never as a decision authority.</p>
     </div>
     <div class="governance-grid">
-      <div class="gov-block">
-        <div class="gov-num">01 —</div>
-        <h3>Human-in-the-Loop Architecture</h3>
-        <p>Every governance signal is supervised. No reimbursement decision, institutional evaluation, or compliance signal is executed without human oversight. Final decisions remain with insurance institutions, clinical review boards, and governance bodies.</p>
-        <div class="gov-tags">
-          <span class="tag">Mandatory Supervision</span>
-          <span class="tag">No Auto-Approval</span>
-          <span class="tag">Institutional Authority</span>
-        </div>
-      </div>
-      <div class="gov-block">
-        <div class="gov-num">02 —</div>
-        <h3>Explainable AI (XAI) Protocols</h3>
-        <p>No opaque probability scores are delivered without traceable reasoning. Each signal includes its trigger parameter, reference threshold, divergence metric, risk-adjustment modifier, and mapping confidence level. Transparency is structural, not optional.</p>
-        <div class="gov-tags">
-          <span class="tag">Full Signal Traceability</span>
-          <span class="tag">Audit Pathways</span>
-          <span class="tag">Version Control</span>
-        </div>
-      </div>
-      <div class="gov-block">
-        <div class="gov-num">03 —</div>
-        <h3>EU AI Act & GDPR Alignment</h3>
-        <p>Designed under high-accountability AI governance principles with GDPR data minimisation standards and purpose limitation requirements. Role-based access control ensures data remains purpose-bound across all operational layers.</p>
-        <div class="gov-tags">
-          <span class="tag">EU AI Act Principles</span>
-          <span class="tag">GDPR Compliant</span>
-          <span class="tag">Data Minimisation</span>
-        </div>
-      </div>
-      <div class="gov-block">
-        <div class="gov-num">04 —</div>
-        <h3>Bias Monitoring & Fairness Controls</h3>
-        <p>Periodic evaluation of signal distribution asymmetry, specialty-level variance, and institutional clustering effects. High-complexity centres treating difficult populations are protected by architectural design — complexity is contextualized, not penalized.</p>
-        <div class="gov-tags">
-          <span class="tag">Signal Distribution Audit</span>
-          <span class="tag">Specialty Variance Review</span>
-          <span class="tag">Complexity Protection</span>
-        </div>
-      </div>
-      <div class="gov-block">
-        <div class="gov-num">05 —</div>
-        <h3>Academic Oversight Consortium</h3>
-        <p>The Indication Matrix is developed and recalibrated by an academic consortium under periodic review to ensure clinical validity, evidence alignment, threshold updates, and risk adjustment recalibration. Institutions may initiate recalibration dialogue.</p>
-        <div class="gov-tags">
-          <span class="tag">Living Governance Instrument</span>
-          <span class="tag">Evidence Integration</span>
-          <span class="tag">Institutional Challenge Rights</span>
-        </div>
-      </div>
-      <div class="gov-block">
-        <div class="gov-num">06 —</div>
-        <h3>Coordination Without Concentration</h3>
-        <p>Identity data never crosses borders. Encrypted tokenization ensures no personal identifiers are transmitted. Each operational layer is separated by role with restricted data access privileges. Cross-domain data aggregation is prevented by architectural design.</p>
-        <div class="gov-tags">
-          <span class="tag">Zero Cross-Border Identity</span>
-          <span class="tag">Tokenized Architecture</span>
-          <span class="tag">Role Separation</span>
-        </div>
-      </div>
+      <div class="gov-block"><div class="gov-num">01 —</div><h3>Human-in-the-Loop Architecture</h3><p>Every governance signal is supervised. No reimbursement decision, institutional evaluation, or compliance signal is executed without human oversight. Final decisions remain with insurance institutions, clinical review boards, and governance bodies.</p><div class="gov-tags"><span class="tag">Mandatory Supervision</span><span class="tag">No Auto-Approval</span><span class="tag">Institutional Authority</span></div></div>
+      <div class="gov-block"><div class="gov-num">02 —</div><h3>Explainable AI (XAI) Protocols</h3><p>No opaque probability scores are delivered without traceable reasoning. Each signal includes its trigger parameter, reference threshold, divergence metric, risk-adjustment modifier, and mapping confidence level. Transparency is structural, not optional.</p><div class="gov-tags"><span class="tag">Full Signal Traceability</span><span class="tag">Audit Pathways</span><span class="tag">Version Control</span></div></div>
+      <div class="gov-block"><div class="gov-num">03 —</div><h3>EU AI Act & GDPR Alignment</h3><p>Designed under high-accountability AI governance principles with GDPR data minimisation standards and purpose limitation requirements. Role-based access control ensures data remains purpose-bound across all operational layers.</p><div class="gov-tags"><span class="tag">EU AI Act Principles</span><span class="tag">GDPR Compliant</span><span class="tag">Data Minimisation</span></div></div>
+      <div class="gov-block"><div class="gov-num">04 —</div><h3>Bias Monitoring & Fairness Controls</h3><p>Periodic evaluation of signal distribution asymmetry, specialty-level variance, and institutional clustering effects. High-complexity centres treating difficult populations are protected by architectural design — complexity is contextualized, not penalized.</p><div class="gov-tags"><span class="tag">Signal Distribution Audit</span><span class="tag">Specialty Variance Review</span><span class="tag">Complexity Protection</span></div></div>
+      <div class="gov-block"><div class="gov-num">05 —</div><h3>Academic Oversight Consortium</h3><p>The Indication Matrix is developed and recalibrated by an academic consortium under periodic review to ensure clinical validity, evidence alignment, threshold updates, and risk adjustment recalibration. Institutions may initiate recalibration dialogue.</p><div class="gov-tags"><span class="tag">Living Governance Instrument</span><span class="tag">Evidence Integration</span><span class="tag">Institutional Challenge Rights</span></div></div>
+      <div class="gov-block"><div class="gov-num">06 —</div><h3>Coordination Without Concentration</h3><p>Identity data never crosses borders. Encrypted tokenization ensures no personal identifiers are transmitted. Each operational layer is separated by role with restricted data access privileges. Cross-domain data aggregation is prevented by architectural design.</p><div class="gov-tags"><span class="tag">Zero Cross-Border Identity</span><span class="tag">Tokenized Architecture</span><span class="tag">Role Separation</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PILOT ═══ -->
 <section id="pilot" class="pilot-section">
   <div class="section-inner">
     <div class="section-header">
@@ -1059,103 +814,36 @@
         <div class="corridor-visual">
           <div class="corridor-title">// Active Validation Corridor — Phase 1</div>
           <div class="corridor-cities">
-            <div class="city-block">
-              <div class="city-name">Kayseri</div>
-              <div class="city-country">Türkiye</div>
-            </div>
-            <div class="corridor-line">
-              <div class="cline"></div>
-              <div class="corridor-distance">~2,700 KM</div>
-            </div>
-            <div class="city-block" style="text-align:right">
-              <div class="city-name">Dordrecht</div>
-              <div class="city-country">Netherlands</div>
-            </div>
+            <div class="city-block"><div class="city-name">Kayseri</div><div class="city-country">Türkiye</div></div>
+            <div class="corridor-line"><div class="cline"></div><div class="corridor-distance">~2,700 KM</div></div>
+            <div class="city-block" style="text-align:right"><div class="city-name">Dordrecht</div><div class="city-country">Netherlands</div></div>
           </div>
-
           <div class="flow-steps">
-            <div class="flow-step">
-              <div class="step-num">01</div>
-              <div class="step-content">
-                <h4>Patient contacts Dutch family physician</h4>
-                <p>GP evaluates clinical necessity of examination in Kayseri under existing gatekeeper logic.</p>
-              </div>
-            </div>
-            <div class="flow-step">
-              <div class="step-num">02</div>
-              <div class="step-content">
-                <h4>Encrypted referral token generated</h4>
-                <p>No personal identifiers cross borders. Identity and clinical data are architecturally separated.</p>
-              </div>
-            </div>
-            <div class="flow-step">
-              <div class="step-num">03</div>
-              <div class="step-content">
-                <h4>Clinical assessment in Kayseri</h4>
-                <p>Participating clinical partner operates under pre-alignment training and documentation standards.</p>
-              </div>
-            </div>
-            <div class="flow-step">
-              <div class="step-num">04</div>
-              <div class="step-content">
-                <h4>Report returns to originating GP</h4>
-                <p>Clinical report transmitted directly back to the Dutch GP system. Gatekeeper continuity preserved.</p>
-              </div>
-            </div>
-            <div class="flow-step">
-              <div class="step-num">05</div>
-              <div class="step-content">
-                <h4>Governance signal generated</h4>
-                <p>Indication alignment, complication context, and mapping confidence evaluated under supervised AI architecture.</p>
-              </div>
-            </div>
+            <div class="flow-step"><div class="step-num">01</div><div class="step-content"><h4>Patient contacts Dutch family physician</h4><p>GP evaluates clinical necessity of examination in Kayseri under existing gatekeeper logic.</p></div></div>
+            <div class="flow-step"><div class="step-num">02</div><div class="step-content"><h4>Encrypted referral token generated</h4><p>No personal identifiers cross borders. Identity and clinical data are architecturally separated.</p></div></div>
+            <div class="flow-step"><div class="step-num">03</div><div class="step-content"><h4>Clinical assessment in Kayseri</h4><p>Participating clinical partner operates under pre-alignment training and documentation standards.</p></div></div>
+            <div class="flow-step"><div class="step-num">04</div><div class="step-content"><h4>Report returns to originating GP</h4><p>Clinical report transmitted directly back to the Dutch GP system. Gatekeeper continuity preserved.</p></div></div>
+            <div class="flow-step"><div class="step-num">05</div><div class="step-content"><h4>Governance signal generated</h4><p>Indication alignment, complication context, and mapping confidence evaluated under supervised AI architecture.</p></div></div>
           </div>
         </div>
       </div>
-
       <div>
         <div class="pilot-stats">
-          <div class="stat-block">
-            <div class="stat-val">Phase 1</div>
-            <div class="stat-label">Active corridor validation in Kayseri–Dordrecht corridor</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-val">4</div>
-            <div class="stat-label">Expansion phases toward multi-corridor European network</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-val">0</div>
-            <div class="stat-label">Personal identifiers transmitted cross-border</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-val">∞</div>
-            <div class="stat-label">Institutional autonomy preserved throughout participation</div>
-          </div>
+          <div class="stat-block"><div class="stat-val">Phase 1</div><div class="stat-label">Active corridor validation in Kayseri–Dordrecht corridor</div></div>
+          <div class="stat-block"><div class="stat-val">4</div><div class="stat-label">Expansion phases toward multi-corridor European network</div></div>
+          <div class="stat-block"><div class="stat-val">0</div><div class="stat-label">Personal identifiers transmitted cross-border</div></div>
+          <div class="stat-block"><div class="stat-val">∞</div><div class="stat-label">Institutional autonomy preserved throughout participation</div></div>
         </div>
-
         <div style="margin-top: 32px;">
           <span class="section-tag">§ Validation Metrics</span>
           <p style="font-size: 0.85rem; color: var(--slate); line-height: 1.8; margin-top: 12px; margin-bottom: 24px;">The corridor measures signal consistency, inter-review agreement, variance reduction index, dispute cycle length, and institutional feedback. Expansion follows measurable validation — evidence before scale.</p>
-
           <div style="background: var(--navy-mid); border: 1px solid var(--border); padding: 28px;">
             <div class="section-tag" style="margin-bottom: 16px;">§ Phase-Based Expansion Roadmap</div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-              <div style="display: flex; gap: 16px; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--green); border: 1px solid var(--green); padding: 2px 8px; flex-shrink: 0;">ACTIVE</span>
-                <span style="font-size: 0.8rem; color: var(--silver);">Phase 1 — NL–TR corridor validation</span>
-              </div>
-              <div style="display: flex; gap: 16px; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 2px 8px; flex-shrink: 0;">NEXT</span>
-                <span style="font-size: 0.8rem; color: var(--slate);">Phase 2 — Matrix recalibration & institutional onboarding</span>
-              </div>
-              <div style="display: flex; gap: 16px; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--slate); border: 1px solid var(--border); padding: 2px 8px; flex-shrink: 0;">PLANNED</span>
-                <span style="font-size: 0.8rem; color: var(--slate);">Phase 3 — Expanded corridor replication within Europe</span>
-              </div>
-              <div style="display: flex; gap: 16px; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--slate); border: 1px solid var(--border); padding: 2px 8px; flex-shrink: 0;">PLANNED</span>
-                <span style="font-size: 0.8rem; color: var(--slate);">Phase 4 — Multi-corridor structured governance network</span>
-              </div>
+              <div style="display: flex; gap: 16px; align-items: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--green); border: 1px solid var(--green); padding: 2px 8px; flex-shrink: 0;">ACTIVE</span><span style="font-size: 0.8rem; color: var(--silver);">Phase 1 — NL–TR corridor validation</span></div>
+              <div style="display: flex; gap: 16px; align-items: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 2px 8px; flex-shrink: 0;">NEXT</span><span style="font-size: 0.8rem; color: var(--slate);">Phase 2 — Matrix recalibration & institutional onboarding</span></div>
+              <div style="display: flex; gap: 16px; align-items: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--slate); border: 1px solid var(--border); padding: 2px 8px; flex-shrink: 0;">PLANNED</span><span style="font-size: 0.8rem; color: var(--slate);">Phase 3 — Expanded corridor replication within Europe</span></div>
+              <div style="display: flex; gap: 16px; align-items: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--slate); border: 1px solid var(--border); padding: 2px 8px; flex-shrink: 0;">PLANNED</span><span style="font-size: 0.8rem; color: var(--slate);">Phase 4 — Multi-corridor structured governance network</span></div>
             </div>
           </div>
         </div>
@@ -1164,7 +852,6 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -1183,9 +870,9 @@
     <div class="footer-col">
       <h4>Interfaces</h4>
       <ul>
-        <li><a href="#">buitenarts.com</a></li>
-        <li><a href="#">buitenscore.com</a></li>
-        <li><a href="#">buitenclaims.com</a></li>
+        <li><a href="https://buitenarts.com" target="_blank">buitenarts.com</a></li>
+        <li><a href="https://buitenscore.com" target="_blank">buitenscore.com</a></li>
+        <li><a href="https://buitenclaims.com" target="_blank">buitenclaims.com</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1209,32 +896,18 @@
 </footer>
 
 <script>
-  // Scroll-triggered fade-in
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Nav active state on scroll
   const sections = document.querySelectorAll('section[id], div[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current
-        ? 'var(--pure)' : '';
-    });
-    // Nav background solidify
-    document.querySelector('nav').style.background =
-      window.scrollY > 60 ? 'rgba(11,30,61,0.98)' : 'rgba(11,30,61,0.85)';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--pure)' : ''; });
+    document.querySelector('nav').style.background = window.scrollY > 60 ? 'rgba(11,30,61,0.98)' : 'rgba(11,30,61,0.85)';
   });
 </script>
 </body>
